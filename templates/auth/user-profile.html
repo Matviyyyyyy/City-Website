@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+        <div class="user-div">
+            <div class="row">
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <br>
+                    <h1 class="def-text" style="text-align: center;"><b>{{ user.first_name }} {{ user.last_name }}</b></h1>
+                    <br>
+                    <h4 class="def-text">{{ user.phone_number }} <img src="{% static './images/auth/phone.png' %}" class="phone-img"></h4>
+                    <br>
+                    <h4 class="def-text">{{ user.email }} <img src="{% static './images/auth/email.png' %}" class="email-img"></h4>
+                    <br>
+                    {% if request.user.role == "admin" %}
+                        <a href="{% url 'auth:user-list' %}" class="btn btn-dark">Список користувачів</a>
+                    {% endif %}
+            <br>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    {% if user.media %}
+                        <img src="{{ user.media.url }}" class="img-user">
+                    {% else %}
+                        <img src="{% static './images/auth/user-icon2.png' %}" class="img-user">
+                    {% endif %}
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+                            <a class="btn btn-warning" href="{% url 'auth:user-update' user.pk %}">Редагувати</a>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6"></div>
+                        <div class="col-sm-3 col-md-3 col-lg-3">
+                            <form method="post" action="{% url 'auth:logout' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Вийти</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+        </div>
+        <br>
+    </div>
+     <div class="col-sm-2 col-md-2 col-lg-2"></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

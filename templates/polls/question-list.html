@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load static %}
+<br>
+<br>
+{% if request.user.role == "admin" or request.user.role == "moderator" %}
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <a class="btn btn-create-ques" href="{% url 'polls:question-create' %}" ><i>Створити питання</i></a>
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    </div>
+{% endif %}
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-1 col-md-1 col-lg-1"></div>
+    <div class="col-sm-10 col-md-10 col-lg-10">
+        <br>
+        {% for question in questions %}
+            <a href = "{% url 'polls:question-detail' question.pk %}" class="a-poll">
+                <div class="question-div">
+                    <h2 class="def-text">{{ question.text }}</h2>
+                </div>
+            </a>
+            <br>
+            <br>
+        {% empty %}
+        <h2 class="def-text" style="text-align:center"><i>Немає опитувань...</i></h2>
+        {% endfor %}
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1"></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

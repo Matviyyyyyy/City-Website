@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load static %}
+
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+        <div class="form-div-walk">
+            <br>
+            <h1 class="def-text" style="text-align: center;">Додавання закладу/події</h1>
+            <br>
+            <form method="POST">
+                {% csrf_token %}
+                <br>
+                {% if form.institution.field.choices %}
+                    <label>{{ form.institution.label }}</label>
+                    <br>
+                    <br>
+                    {{ form.institution }}
+                {% else %}
+                    <br>
+                    <p class="text-danger">Закладів немає.</p>
+                    <br>
+                {% endif %}
+                
+                {% if form.events.field.choices %}
+                    <br>
+                    <label>{{ form.events.label }}</label>
+                    <br>
+                    {{ form.events }}
+                {% else %}
+                    <br>
+                    <p class="text-danger">Подій немає.</p>
+                    <br>
+                {% endif %}
+                
+                <button type="submit" class="btn btn-success">Зберегти</button>
+                <a href="{% url 'walking:walk-detail' walk.pk %}" class="btn btn-secondary">Назад</a>
+            </form>
+            <br>
+        </div>
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

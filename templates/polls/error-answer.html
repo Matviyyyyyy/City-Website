@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-sm container-md container-lg">
+    <br>
+    <h1 style="text-align:center; color: red"><b>Ти вже відповів!!! - <a class="btn btn-secondary" href="{% url 'polls:question-detail' question.pk %}">Назад</a></b></h1>
+    <br>
+</div>
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% block content %}
+
+{% load static %}
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+        <a class="btn btn-create-walk" href="{% url 'walking:walk-create' %}" ><i>Створити прогулянку</i></a>
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+</div>
+<br>
+<br>
+<br>
+    <div class="row">
+        {% for walk in walks %}
+        <div class="col-sm-4 col-md-4 col-lg-4">
+                <a href="{% url 'walking:walk-detail' walk.pk %}" class="a-walk">
+                    <section class="walks">
+                        <article class="walk">
+                            <h2 class="def-txt" style="text-align:center;">{{ walk.name }}</h2>
+                            <br>
+                            {% if walk.type == 'nature' %}
+                                <img src="{% static './images/walking/nature2.jpg' %}" class="img_type">
+                            {% elif walk.type == 'city' %}
+                                <img src="{% static './images/walking/city4.png' %}" class="img_type">
+                            {% elif walk.type == 'historic' %}
+                                <img src="{% static './images/walking/historic.jpg' %}" class="img_type">
+                            {% elif walk.type == 'sport' %}
+                                <img src="{% static './images/walking/sport.jpg' %}" class="img_type">
+                            {% endif %}
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-3 col-md-3 col-lg-3">
+                                    <h5><img src="{% static './images/walking/people.png' %}" style="width: 42px; height:auto; margin: 5px;"> {{ walk.number_members }}</h5>
+                                </div>
+                                <div class="col-sm-7 col-md-7 col-lg-7">
+
+                                </div>
+                                <div class="col-sm-2 col-md-2 col-lg-2">
+                                    {% if walk.status == 'scheduled' %}
+                                        <img src="{% static './images/walking/sheduled.png' %}" style="width: 35px; height:auto; margin: 5px;">
+                                    {% elif walk.status == 'in_progres' %}
+                                        <img src="{% static './images/walking/in_progress.png' %}" style="width: 35px; height:auto; margin: 5px;">
+                                    {% elif walk.status == 'completed' %}
+                                        <img src="{% static './images/walking/completed.png' %}" style="width: 35px; height:auto; margin: 5px;">
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+                </a>
+            <br>
+            <br>
+            <br>
+        </div>
+        {% empty %}
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h2 class="def-text" style="text-align:center; "><b>Ще немає прогулянок...</b></h2>
+            </div>
+
+        {% endfor %}
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

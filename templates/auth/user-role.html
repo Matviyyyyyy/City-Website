@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<br>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+        <div class="form-role-div">
+            <h1 class="def-text" style="text-align:center;">Зміна ролі користувача</h1>
+            <br>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br>
+                <button type="submit" class="btn btn-dark">Змінити</button>
+                <a class="btn btn-secondary" href="{% url 'auth:user-list' %}">Назад</a>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

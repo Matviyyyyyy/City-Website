@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<br>
+<h1 class="def-text" style="text-align:center;" >Список користувачів</h1>
+<br>
+<div class="row">
+  <div class="col-sm-2 col-md-2 col-lg-2"></div>
+  <div class="col-sm-8 col-md-8 col-lg-8">
+    {% for user in users %}
+      <div class="div-user-role">
+          <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2"><h4>{{ user.username }}</h4></div>
+            <div class="col-sm-8 col-md-8 col-lg-8"></div>
+            <div class="col-sm-2 col-md-2 col-lg-2">
+                {% if user.role == 'admin' %}
+                    <h4 style="text-align: right;"><span class="span-admin">{{ user.role }}</span></h4>
+                {% elif user.role == 'moderator' %}
+                <h4 style="text-align: right;"><span class="span-moderator">{{ user.role }}</span></h4>
+                {% elif user.role == 'user' %}
+                <h4 style="text-align: right;"><span class="span-user">{{ user.role }}</span></h4>
+                {% endif %}
+            </div>
+          </div>
+          <br>
+          <a class="btn btn-secondary" href="{% url 'auth:user-role' user.pk %}">Змінити роль</a>
+          <br>
+          <br>
+          <form action="{% url 'auth:user-delete' user.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Ви справді хочете видалити користувача?')">Видалити користувача</button>
+          </form>
+          <!--<a class="btn btn-danger" href="{% url 'auth:user-delete' user.pk %}">Видалити користувача</a>-->
+          <br>
+      </div>
+      <br>
+
+
+    {% endfor %}
+  </div>
+  <div class="col-sm-2 col-md-2 col-lg-2"></div>
+</div>
+<br>
+{% endblock %}

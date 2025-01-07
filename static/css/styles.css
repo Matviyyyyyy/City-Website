@@ -1,0 +1,907 @@
+
+
+.img-icon-nav{
+    max-width: 70%;
+    height: auto;
+}
+
+.nav-edit{
+    border-bottom: 1px solid #ced4da;
+    background-color: white;
+}
+
+.a-nav{
+    color: #212529;
+    position: absolute;
+    text-decoration:none;
+    font-family: "Inter", sans-serif;
+    font-size: 17.5px;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-top: 30px;
+
+}
+
+.a-nav:hover{
+    color: #dc3545;
+    text-decoration:none;
+}
+
+.user-icon-img{
+    max-width: 25%;
+    height: auto;
+
+}
+
+.search-icon-img{
+    max-width: 20%;
+    height: auto;
+    margin-right: 4px;
+
+}
+
+.user-search-div{
+    position: absolute;
+    margin-top: 26px;
+}
+
+.advert-main{
+    border: 2px solid #ffff00;
+    background-color: #f7f7cb;
+    font: "Inter", sans-serif;
+    text-align: center;
+    vertical-align: center;
+    border-radius: 20px;
+    padding-top: 5px;
+    padding-bottom: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 5px;
+    max-width: 100%;
+}
+
+.close-advert{
+    font-size: 25px;
+    color: black;
+    font: "Inter", sans-serif;
+    background-color: #f7f7cb;
+    border: 2px solid black;
+    border-radius: 100px;
+    width: 40px;
+    height: 40px;
+    margin-left: 1450px;
+}
+
+.close-advert:hover{
+    background-color: #fdffde;
+}
+.line-container {
+        position: relative;
+        width: 100%;
+        text-align: center;
+    }
+
+    .line {
+        border: none;
+        height: 4px; /* Товста лінія */
+        background-color: #2f2f2f; /* Колір лінії */
+        margin: 0;
+    }
+
+    .triangle {
+        position: absolute;
+        top: 120%; /* Сильно зміщений вниз */
+        left: 5%; /* Майже в самому початку ліворуч */
+        transform: translate(-50%, -50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid #2f2f2f; /* Колір трикутника */
+}
+
+.def-text{
+    color: black;
+    font: "Inter", sans-serif;
+}
+
+.adverts-div{
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.advert-div{
+    max-width: 100%;
+    border: 2px solid #b8b8b8;
+    border-radius: 10px;
+    background-color: white;
+    padding: 20px;
+    margin: 5px;
+}
+
+.img-advert{
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.advert-form{
+    padding: 30px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.ins-div {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    border: 2px solid #ddd;
+    padding: 20px;
+    margin: 5px;
+}
+
+.ins-image{
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+
+.desc-ins{
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.review-div{
+    border: 1px solid #bababa;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+}
+
+
+.advert-form-delete{
+    padding: 40px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.walk-details{
+    border-top: 2px solid #42ff6e;
+    border: 2px solid #e0e0e0;
+    background: #f7f7f7;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    margin: 30px;
+}
+
+
+.a-ins-detail{
+    text-decoration: none;
+}
+
+.a-ins-detail:hover{
+    text-decoration: none;
+}
+
+.user-div{
+    max-width: 100%;
+    border-top: 4px solid #17a2b8;
+    padding: 30px;
+    margin: 10px;
+    border-radius: 15px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.phone-img{
+    width: 25px;
+    height: auto;
+}
+
+.email-img{
+    width: 30px;
+    height: auto;
+}
+
+.img-user{
+    width: 320px; /* Задайте бажану ширину */
+    height:320px; /* Задайте бажану висоту */
+    border-radius: 50%; /* Робить зображення круглим */
+    object-fit: cover; /* Центрує та обрізає зображення, щоб воно заповнювало коло */
+    overflow: hidden; /* Забезпечує обрізання країв, якщо зображення більше за контейнер */
+    margin-left: 30px;
+    max-right: 30px;
+}
+
+.div-user-role{
+    padding: 20px;
+    border: 3px solid #ddd;
+    border-radius: 30px;
+    max-width: 100%;
+    margin:10px;
+}
+
+.span-admin{
+    background-color: #99CCFF;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.span-moderator{
+    background-color: #FF9999;
+    padding: 7px;
+    border-radius: 5px;
+}
+
+.span-user{
+    background-color: #FFFF99;
+    padding: 7px;
+    border-radius: 10px;
+}
+
+.form-role-div{
+    border: 3px solid #ddd;
+    padding: 40px;
+    border-radius: 30px;
+    max-width: 100%;
+    margin:10px;
+}
+
+.btn-create-advert{
+    width: 1000px;
+    height: 90px;
+    text-align: center;
+    font-size: 30px;
+    background-color: #b8b8b8;
+    color: black;
+    border-radius: 30px;
+    text-decoration: none;
+    padding: 20px;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+
+.btn-create-advert:hover{
+    color: black;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+.form-create-ins{
+    padding: 20px;
+    max-width: 100%;
+    border-top: 4px solid #64B5F6;
+    border-radius: 30px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+ .event-day {
+    background-color: #ffd700;
+    font-weight: bold;
+}
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.table-div{
+    background-color: white;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+.others-div{
+    border: none;
+    padding: 10px;
+    border-radius: 20px;
+    padding: 10px;
+}
+.div-event{
+    border: 2px solid white;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    border-top: 3px solid #ffd700;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.div-event:hover{
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+.a-ev{
+    text-decoration: none;
+}
+.a-ev:hover{
+    text-decoration: none;
+}
+
+.others-div-detail {
+    border: none;
+    padding: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    border-top: 3px solid #ffd700;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.errorlist {
+    color: red; /* або будь-який інший колір */
+    font-weight: bold; /* для прикладу можемо зробити текст жирним */
+}
+
+        /* Якщо ви використовуєте Bootstrap 4 або 5 */
+.invalid-feedback {
+    color: red; /* зміна кольору для помилок Bootstrap */
+    font-weight: bold;
+}
+
+.others-div-update{
+    border: none;
+    padding: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    border-top: 3px solid #ffd700;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.others-div-add{
+    border: none;
+    padding: 20px;
+    border-radius: 20px;
+    padding: 10px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    border-top: 3px solid #ffd700;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.desc-ins{
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+.review-div{
+    border: 1px solid #bababa;
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 5px;
+}
+.img-btn{
+    width: 30px;
+    height: auto;
+}
+
+
+.btn-create-ins{
+    width: 1000px;
+    height: 90px;
+    text-align: center;
+    font-size: 30px;
+    background-color: #64B5F6;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    padding: 20px;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+.btn-create-ins:hover{
+    color: white;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+.ins-div {
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+    border: 2px solid #ddd;
+    padding: 20px;
+    margin: 5px;
+}
+
+.ins-div:hover{
+    box-shadow: 0px 4px 8px #64B5F6;
+}
+
+.img-ins{
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+.btn-more{
+    font-size: 30px;
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 100px;
+    border: 3px solid #ddd;
+    background-color: #dedede;
+    text-align: center;
+    vertical-align:center;
+    margin-left: 55px;
+}
+
+.btn-more:hover{
+    background-color: #ededed;
+    border: 3px solid #ededed;
+}
+
+    /* Стилі для контейнера #results */
+/* Стилі для контейнера #results */
+#results {
+    font-family: "Inter", sans-serif; /* Встановлюємо шрифт для всіх елементів всередині */
+}
+
+/* Стилі для всіх посилань <a> всередині #results */
+#results a {
+    text-decoration: none; /* Прибираємо підкреслення */
+    color: inherit; /* Залишаємо колір за замовчуванням */
+    transition: color 0.3s ease, transform 0.3s ease; /* Анімація при зміні кольору та трансформації */
+}
+
+/* Стилі для посилань <a> при наведенні */
+#results a:hover {
+    color: #64B5F6; /* Колір при наведенні */
+    transform: translateX(10px); /* Переміщаємо вправо */
+    text-decoration: none; /* Забираємо підкреслення при hover */
+}
+
+.line-container {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.line {
+    border: none;
+    height: 4px; /* Товста лінія */
+    background-color: #2f2f2f; /* Колір лінії */
+    margin: 0;
+}
+
+.triangle {
+    position: absolute;
+    top: 120%; /* Сильно зміщений вниз */
+    left: 5%; /* Майже в самому початку ліворуч */
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #2f2f2f; /* Колір трикутника */
+}
+.table-main {
+    border-collapse: collapse; /* Усуває проміжки між кордонами */
+    width: 100%;
+    border-top: 1px dotted #cfcfcf;
+    border-left: 1px dotted #cfcfcf;
+}
+
+.main-td{
+    border: 1px dotted #cfcfcf;
+    padding: 12px;
+    text-align: center;
+}
+.img-table{
+    width: 150px;
+    height: auto;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+.a-table{
+    text-decoration: none;
+}
+
+.a-table:hover{
+     text-decoration: none;
+}
+
+.img-table:hover {
+      opacity: 1;
+}
+
+ .ins-main{
+    border: 2px solid black;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.new-div{
+    max-width: 100%;
+    border-top: 4px solid #b052e3;
+    padding: 30px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 15px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.new-div:hover{
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+.file-new{
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
+.date-div{
+    text-align:right;
+}
+.new-date{
+    background-color: #2b3c80;
+    color: #fff;
+    float: right;
+    line-height: 27px;
+    font-size: 12px;
+    text-align: center;
+    width: 50px;
+    border-radius: 45%;
+}
+
+.form-div-create-new{
+    padding: 20px;
+    max-width: 100%;
+    border-top: 4px solid #b052e3;
+    border-radius: 15px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+    .btn-add{
+    background-color: #b052e3;
+    color: white;
+}
+
+
+.btn-create-new{
+    width: 1000px;
+    height: 90px;
+    text-align: center;
+    font-size: 30px;
+    background-color: #b052e3;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    padding: 20px;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+.btn-create-walk:hover{
+    color: white;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+.add-button {
+    width: 60px; /* Ширина кнопки */
+    height: 60px; /* Висота кнопки */
+    border-radius: 50%; /* Робить кнопку круглою */
+    background-color: #b052e3; /* Колір кнопки (зелений) */
+    color: #fff; /* Колір тексту (білий) */
+    border: none; /* Відсутність рамки */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Тінь для об'єму */
+    font-size: 24px; /* Розмір шрифту для знака "+" */
+    font-weight: bold; /* Жирність шрифту */
+    display: flex; /* Для центрування тексту */
+    align-items: center; /* Вертикальне центрування */
+    justify-content: center; /* Горизонтальне центрування */
+    cursor: pointer; /* Іконка курсора при наведенні */
+    transition: transform 0.2s, background-color 0.3s; /* Анімація */
+    margin-left: 70px;
+}
+
+.add-button:hover {
+    background-color: #8e41ba     ; /* Темніший зелений при наведенні */
+    transform: scale(1.1); /* Легка анімація збільшення */
+}
+
+.add-button:active {
+    transform: scale(0.95); /* Ефект натискання */
+}
+ .btn-filter{
+    background-color: #b052e3;
+    color: white;
+}
+
+.form-div-new-update{
+    padding: 20px;
+    max-width: 100%;
+    border-top: 4px solid #b052e3;
+    border-radius: 15px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-div-polls{
+    padding: 20px;
+    max-width: 100%;
+    border-top: 4px solid #e63a2e;
+    border-radius: 30px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+
+.question-div{
+    max-width: 100%;
+    border-top: 4px solid #e63a2e;
+    padding: 30px;
+    text-align: center;
+    border-radius: 40px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.question-div:hover{
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+.a-poll{
+    text-decoration: none;
+    color: black;
+}
+.a-poll:hover{
+    text-decoration: none;
+    color: black;
+}
+.btn-create-ques{
+    width: 1000px;
+    height: 90px;
+    text-align: center;
+    font-size: 30px;
+    background-color: #ed4e42;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    padding: 20px;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+.btn-create-ques:hover{
+    color: white;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+.btn-choice {
+    display: block;
+    width: 100%; /* Максимальна ширина */
+    height: auto; /* Автоматична висота */
+    font-size: 1.5rem; /* Збільшений шрифт */
+    padding: 10px 20px; /* Внутрішні відступи для покращення вигляду */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+    color: white;
+    margin: 7px;
+}
+.settings{
+    border: 3px solid black;
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 100%;
+}
+
+.form-div-walk{
+    padding: 20px;
+    max-width: 100%;
+    border-top: 4px solid #42ff6e;
+    border-radius: 30px;
+    border-left: 3px solid #ddd;
+    border-right: 3px solid #ddd;
+    border-bottom: 3px solid #ddd;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.walk-details{
+    border: 3px solid #42ff6e;
+    background: #f7f7f7;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    margin: 30px;
+}
+.ins-li::marker {
+    font-size: 1.5em; /* Збільшує розмір крапки */
+    color: black;     /* Змінює колір, якщо потрібно */
+}
+.div-ins{
+    margin: 10px;
+    padding: 10px;
+    border: 3px solid #64B5F6;
+    border-radius: 20px;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+.div-ins:hover{
+    transform: scale(1.05);
+}
+.ins-a{
+    text-decoration: none;
+}
+.ins-a:hover{
+    text-decoration: none;
+}
+.div-event{
+    margin: 10px;
+    padding: 20px;
+    border: 3px solid #FFD54F;
+    border-radius: 20px;
+    box-shadow: 10px 10px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+.div-event:hover{
+    transform: scale(1.05);
+}
+
+
+.walk {
+    background: white;
+    border: 3px solid #ddd;
+    position:relative;
+    border-radius: 12px;
+    padding: 25px;
+    margin: 5px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+}
+.walk:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+}
+.walk::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #4CAF50, #8BC34A);}
+.img_type {
+    max-width: 100%;
+    margin: 5px;
+    height: auto;
+    border-radius: 25px;
+}
+.a-walk{
+    text-decoration: none;
+    color: black;
+}
+.a-walk:hover{
+    text-decoration: none;
+    color: black;
+}
+.btn-create-walk{
+    width: 1000px;
+    height: 90px;
+    text-align: center;
+    font-size: 30px;
+    background-color: #49e372;
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    padding: 20px;
+    transition: transform 0.5s, box-shadow 0.5s;
+}
+.btn-create-walk:hover{
+    color: white;
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+.footer {
+    background-color: #2c2c2c;
+    color: #fff;
+    padding: 20px 0;
+    font-size: 14px;
+}
+
+.footer .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-section h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #fff;
+}
+
+.footer-section p, .footer-section a, .footer-section ul {
+    margin: 5px 0;
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin: 5px 0;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-social .social-link {
+    display: block;
+    margin: 10px 0;
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-social .social-link.facebook:hover {
+    color: #4267B2;
+}
+
+.footer-social .social-link.youtube:hover {
+    color: #FF0000;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #444;
+    padding-top: 10px;
+    font-size: 13px;
+}
+
+.footer-bottom a {
+    color: #ccc;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,41 @@
+{% extends 'base.html'  %}
+{% block content %}
+
+{% load static %}
+    <br>
+    <div class="container-sm container-md container-lg">
+        <div class="others-div-detail">
+            <a href="{% url 'events:calendar' %}" class="btn btn-warning" >Назад</a>
+            <h1 class="def-text" style="text-align:center;">{{ event.title }}</h1>
+            <br>
+            <br>
+            <p class="def-text">{{ event.description }}</p>
+            <br>
+            <br>
+            <div class="row">
+                {% if request.user.admin_or_moder %}
+                    <div class="col-md-1 col-sm-1 col-lg-1">
+                        <a href="{% url 'events:event-update' event.pk %}" class="btn btn-warning" >Редагувати</a>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-lg-1"></div>
+                    <div class="col-md-1 col-sm-1 col-lg-1">
+                        <form action="{% url 'events:event-delete' event.pk %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-warning" onclick="return confirm('Ви справді хочете видалити цю подію?')">Видалити</button>
+                        </form>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-lg-6"></div>
+                {% else %}
+                    <div class="col-md-9 col-sm-9 col-lg-9"></div>
+                {% endif %}
+                <div class="col-md-3 col-sm-3 col-lg-3">
+                    <h6 style="color:black">{{ event.event_date }}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+<br>
+<br>
+<br>
+
+{% endblock %}

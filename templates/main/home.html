@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+
+    <div class="row">
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+        <div class="col-sm-10 col-md-10 col-lg-10">
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <div class="row">
+                        <div class="col-sm-10 col-md-10 col-lg-10">
+                            <h2 class="def-text"><span style="font-weight: 650; letter-spacing: 2px;">Останні новини та повідомлення</span></h2>
+                        </div>
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <a href="{% url 'news:new-list' %}" class="btn btn-sm btn-danger" style="margin: 0px;">Новини</a>
+                        </div>
+                    </div>
+
+                    <div class="line-container">
+                        <hr class="line">
+                        <div class="triangle"></div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                            <img src="{% static './images/main/totya.png' %}" style="max-width: 100%; height: auto;">
+                            <h2 class="def-text" style="margin-top: 20px; text-align: left;">Наша громада відзначена подякою за розвиток сфери відкритих даних</h2>
+                            <p style="color: #d1d1d1; margin-top: 20px;"><img src="{% static './images/main/time.png' %}" style="width: 20px; height: auto; margin-bottom: 5px;"> 01 Січ 2025</p>
+                        </div>
+                        <div class="col-sm-6 col-md-6 col-lg-6">
+                             {% for new in news %}
+                                {% if new.file %}
+                                <div class="row">
+                                    <div class="col-sm-3 col-md-3 col-lg-3">
+                                        <img src="{{ new.file.url }}" style="max-width: 100%; height: auto; border-radius: 10px;">
+                                    </div>
+                                    <div class="col-sm-9 col-md-9 col-lg-9"">
+                                        <h5 class="def-text">{{ new.title }}</h5>
+                                        <p style="color: #d1d1d1;"><img src="{% static './images/main/time.png' %}" style="width: 18px; height: auto; margin-bottom: 5px;"> {{ new.published_at|date:"d M Y" }}</p>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="row">
+                                    <div class="col-sm-3 col-md-3 col-lg-3"></div>
+                                    <div class="col-sm-9 col-md-9 col-lg-9"">
+                                        <h5 class="def-text">{{ new.title }}</h5>
+                                        <p style="color: #d1d1d1;"><img src="{% static './images/main/time.png' %}" style="width: 18px; height: auto; margin-bottom: 5px;"> {{ new.published_at|date:"d M Y" }}</p>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                <br>
+                             {% empty %}
+                                <br>
+                                <br>
+                                <h5 style="text-align:center;" class="def-text">Немає новин...</h5>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4 col-lg-4">
+                    <br>
+                    <img src="{% static './images/main/dia-main.png' %}" style="max-width: 100%; height: auto;">
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-sm-10 col-md-10 col-lg-10">
+                            <h2 class="def-text"><span style="font-weight: 650; letter-spacing: 2px;">Анонси подій</span></h2>
+                        </div>
+                        <div class="col-sm-2 col-md-2 col-lg-2">
+                            <a href="{% url 'events:calendar' %}" class="btn btn-sm btn-danger" style="margin: 0px;">Події</a>
+                        </div>
+                    </div>
+                    <div class="line-container">
+                        <hr class="line">
+                        <div class="triangle"></div>
+                    </div>
+                    <br>
+                    {% for event in events %}
+                        <p class="def-text" style="margin: 0"><b>{{ event.title }}</b></p>
+                        <p style="color: #d1d1d1; margin-top: 2px; margin-bottom: 0"><img src="{% static './images/main/time.png' %}" style="width: 18px; height: auto; margin-bottom: 5px;"> {{ event.event_date|date:"d M Y" }}</p>
+                        <p style="color: #d1d1d1; margin: 0" ><img src="{% static './images/main/location.png' %}" style="width: 18px; height: auto; margin-bottom: 5px;">{{ event.location }}</p>
+                        <br>
+                    {% empty %}
+                        <br>
+                        <br>
+                        <h5 style="text-align:center;" class="def-text">Немає подій...</h5>
+                    {% endfor %}
+                </div>
+            </div>
+          <br>
+            <br>
+
+            <br>
+            <br>
+            <h2 class="def-text"><span style="font-weight: 650; letter-spacing: 2px;">Важливі посилання</span></h2>
+            <div class="line-container">
+                <hr class="line">
+                <div class="triangle"></div>
+            </div>
+            <br>
+            <br>
+            <table class="table-main">
+              <tr>
+                  <td class="main-td"><a href="https://www.youtube.com/channel/UClMPuoXPiii7M8BoQmye01w/live" class="a-table"><img src="{% static './images/main/table-images/img.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://sheptytska-rada.gov.ua/videozapysy-zasidan" class="a-table"><img src="{% static './images/main/table-images/img_1.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://sheptytska-rada.gov.ua/stst/p-2038" class="a-table"><img src="{% static './images/main/table-images/img_2.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://dream.gov.ua/ua/community/62594?fromUri=/communities&fromPage=6" class="a-table"><img src="{% static './images/main/table-images/img_3.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://ecabinet.sheptytska-rada.gov.ua/ecab/home" class="a-table"><img src="{% static './images/main/table-images/img_4.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://ecabinet.sheptytska-rada.gov.ua/ecab/home" class="a-table"><img src="{% static './images/main/table-images/img_5.png' %}" class="img-table"></a></td>
+              </tr>
+              <tr>
+                  <td class="main-td"><a href="https://sheptytska-rada.gov.ua/zahysnykam-i-zahysnytsiam" class="a-table"><img src="{% static './images/main/table-images/img_6.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://zakupivli.sheptytska-rada.gov.ua/" class="a-table"><img src="{% static './images/main/table-images/img_7.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://sheptytska-rada.gov.ua/spravedlyva-transformatsiia" class="a-table"><img src="{% static './images/main/table-images/img_8.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://eefund.org.ua/energodim/" class="a-table"><img src="{% static './images/main/table-images/img_9.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://sheptytska-rada.gov.ua/yevidnovlennya/bazova-informatsiya" class="a-table"><img src="{% static './images/main/table-images/img_10.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://bot.sheptytska-rada.gov.ua/" class="a-table"><img src="{% static './images/main/table-images/img_11.png' %}" class="img-table"></a></td>
+              </tr>
+                <tr>
+                  <td class="main-td"><a href="https://gis.sheptytska-rada.gov.ua/home" class="a-table"><img src="{% static './images/main/table-images/img_12.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://legalaid.gov.ua/" class="a-table"><img src="{% static './images/main/table-images/img_13.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://sheptytskyi.osvitportal.in.ua/" class="a-table"><img src="{% static './images/main/table-images/img_14.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://inspection.sheptytska-rada.gov.ua/" class="a-table"><img src="{% static './images/main/table-images/img_15.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://openbudget.gov.ua/local-budget/1358700000/info/indicators" class="a-table"><img src="{% static './images/main/table-images/img_16.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://ecabinet.sheptytska-rada.gov.ua/ecab/add-corruption-report-anonymous " class="a-table"><img src="{% static './images/main/table-images/img_17.png' %}" class="img-table"></a></td>
+              </tr>
+                <tr>
+                  <td class="main-td"><a href="https://sheptytska-rada.gov.ua/osbb" class="a-table"><img src="{% static './images/main/table-images/img_18.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://sheptytska-rada.gov.ua/stst/skhema_kompleksnoho_rozmishchennya_zovnishnoi_reklamy_v_misti_chervonohradi" class="a-table"><img src="{% static './images/main/table-images/img_19.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://diia.gov.ua/services/yemalyatko" class="a-table"><img src="{% static './images/main/table-images/img_20.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://sheptytska-rada.gov.ua/Upravlinnia-pratsi-ta-sotsialnogo-zahystu-naselennia/ZHytlovi-subsydii" class="a-table"><img src="{% static './images/main/table-images/img_21.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://medics.ua/users#!?location_id=1298&search" class="a-table"><img src="{% static './images/main/table-images/img_22.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://sheptytska-rada.gov.ua/Bezpeka-ruhu/Bezpechne-vodinnia" class="a-table"><img src="{% static './images/main/table-images/img_23.png' %}" class="img-table"></a></td>
+              </tr>
+                <tr>
+                  <td class="main-td"><a href="https://esadok.com/" class="a-table"><img src="{% static './images/main/table-images/img_24.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://chervonograd.golos.net.ua/" class="a-table"><img src="{% static './images/main/table-images/img_25.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://sheptytska-rada.gov.ua/stst/zapys_na_hurtky" class="a-table"><img src="{% static './images/main/table-images/img_26.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://sheptytska-rada.gov.ua/Viddil-zemelnyh-vidnosyn/Zrazky-zaiav" class="a-table"><img src="{% static './images/main/table-images/img_27.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://loda.gov.ua/services/text/35043" class="a-table"><img src="{% static './images/main/table-images/img_28.png' %}" class="img-table"></a></td>
+                  <td class="main-td"><a href="https://data.loda.gov.ua/dataset/" class="a-table"><img src="{% static './images/main/table-images/img_29.png' %}" class="img-table"></a></td>
+              </tr>
+                <tr>
+                  <td class="main-td"><a href="https://www.eway.in.ua/ua/cities/chervonograd/routes" class="a-table"><img src="{% static './images/main/table-images/img_30.png' %}" class="img-table"></a></td>
+              </tr>
+
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+                <div class="row">
+                    <div class="col-sm-11 col-md-11 col-lg-11">
+                        <h2 class="def-text"><span style="font-weight: 650; letter-spacing: 2px;">Найкращі заклади</span></h2>
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-lg-1">
+                        <a href="{% url 'ins:ins-list' %}" class="btn btn-sm btn-danger" style="margin: 0px;">Заклади</a>
+                    </div>
+                </div>
+                <div class="line-container">
+                    <hr class="line">
+                    <div class="triangle"></div>
+                </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        {% for ins in inss %}
+                            <div class="col-sm-4 col-md-4 col-lg-4">
+                                {% if ins.media %}
+                                        <div class="ins-main">
+                                            <h5 class="def-text" style="text-align: center;"><b>{{ ins.name }}</b></h5>
+                                            <br>
+
+                                            <img src="{{ ins.media.url }}" style="max-width: 100%; height: auto; border-radius: 10px;">
+                                            <div class="row">
+                                                <div class="col-sm-1 col-md-1 col-lg-1">
+                                                    <p style="color: #d1d1d1;">
+                                                        {% if ins.type == "Catering" %}
+                                                            <img src="{% static 'images/ins/catering.png' %}" style="width: 40px; height:auto; margin: 0;">
+                                                        {% elif ins.type == "Sport" %}
+                                                            <img src="{% static 'images/ins/sport.png!sw800' %}" style="width: 40px; height:auto; margin: 0;">
+                                                        {% elif ins.type == "Entertainment" %}
+                                                            <img src="{% static 'images/ins/entertainment.png' %}" style="width: 30px; height:auto">
+                                                        {% elif ins.type == "Education" %}
+                                                            <img src="{% static 'images/ins/education.png' %}" style="width: 40px; height:auto">
+                                                        {% elif ins.type == "Trade" %}
+                                                            <img src="{% static 'images/ins/trade.png' %}" style="width: 35px; height:auto">
+                                                        {% elif ins.type == "Hotels" %}
+                                                            <img src="{% static 'images/ins/hotels.png' %}" style="width: 30px; height:auto">
+                                                        {% elif ins.type == "Beauty and health" %}
+                                                            <img src="{% static 'images/ins/beauty_health.png' %}" style="width: 40px; height:auto">
+                                                        {% endif %}
+                                                    </p>
+                                                </div>
+                                                <div class="col-sm-9 col-md-9 col-lg-9""></div>
+                                                <div class="col-sm-1 col-md-1 col-lg-1">
+                                                    <h4><a href="{{ ins.location }}"> <img src="{% static 'images/ins/location-ins.png' %}" style="width: 20px; height:auto"></a></h4>
+                                                </div>
+                                                 <div class="col-sm-1 col-md-1 col-lg-1"></div>
+                                            </div>
+                                        </div>
+                                    {% else %}
+                                    <div class="row">
+                                        <div class="col-sm-3 col-md-3 col-lg-3"></div>
+                                        <div class="col-sm-9 col-md-9 col-lg-9">
+                                            <h5 class="def-text">{{ new.title }}</h5>
+                                            <p style="color: #d1d1d1;"><img src="{% static './images/main/time.png' %}" style="width: 18px; height: auto; margin-bottom: 5px;"> {{ new.published_at|date:"d M Y" }}</p>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                    <br>
+                            </div>
+                        {% empty %}
+                        <div class="col-sm-12 col-md-12 col-lg-12">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <h1 style="text-align:center;" class="def-text">Немає подій...</h1>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                        </div>
+                        {% endfor %}
+                    </div>
+            <br>
+            <br>
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+    </div>
+{% endblock %}

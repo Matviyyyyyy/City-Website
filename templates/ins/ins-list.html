@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load static %}
+{% load custom_tags %}
+
+{% if request.user.admin_or_moder %}
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-sm-2 col-md-2 col-lg-2"></div>
+            <div class="col-sm-8 col-md-8 col-lg-8">
+                <a class="btn btn-create-ins" href="{% url 'ins:add-ins' %}"><i>Додати заклад</i></a>
+            </div>
+            <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        </div>
+        <br>
+    {% endif %}
+
+<div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <br>
+            <br>
+            <div class="row">
+                <div class="col-sm-1 col-md-1 col-lg-1"></div>
+                <div class="col-sm-10 col-md-10 col-lg-10">
+                    <input type="text" id="search" placeholder="Пошук..." class="form-control">
+                    <div id="results" style="display: flex; flex-direction: column;"></div>
+                </div>
+                <div class="col-sm-1 col-md-1 col-lg-1"></div>
+            </div>
+
+            <br>
+            <br>
+            <div class="container-sm container-md container-lg">
+                <div class="ins-container">
+                        {% include "ins/list-new.html" %}
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                    <div class="col-sm-5 col-md-5 col-lg-5"></div>
+                    <div class="col-sm-2 col-md-2 col-lg-2">
+                        <button id="show-more" class="btn-more" onclick="showMore()">+</button>
+                    </div>
+                    <div class="col-sm-5 col-md-5 col-lg-5"></div>
+                </div>
+            <br>
+            <nav aria-label="Page navigation example">
+                  <ul class="pagination pagination-lg justify-content-center">
+                    <li class="page-item">
+                        {% if page_obj.has_previous %}
+                             <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Попередня</a>
+                        {% else %}
+                            <a class="page-link disabled">Попередня</a>
+                        {% endif %}
+                    </li>
+                      {% for page_num in page_obj.paginator.page_range %}
+                        {% if page_obj.number == page_num %}
+                            <li class="page-item active"><a href="?page={{ page_num }}" class="page-link">{{ page_num }}</a></li>
+                        {% else %}
+                            <li class="page-item"><a href="?page={{ page_num }}" class="page-link">{{ page_num }}</a></li>
+                        {% endif %}
+                      {% endfor %}
+                    <li class="page-item">
+                        {% if page_obj.has_next %}
+                            <a class="page-link" href="?page={{ page_obj.next_page_number }}">Наступна</a>
+                        {% else %}
+                            <a class="page-link disabled">Наступна</a>
+                        {% endif %}
+                    </li>
+                  </ul>
+                </nav>
+                <input type="hidden"  id="page-cur" value="{{ page_obj.number }}">
+                <input type="hidden"  id="page-num" value="{{ page_obj.paginator.num_pages }}">
+            </div>
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+    </div>
+    <script>
+        const searchInput = document.getElementById('search');
+        const resultsDiv = document.getElementById('results');
+
+                // Обробник події 'input' для поля пошуку
+        searchInput.addEventListener('input', function() {
+            const query = searchInput.value.trim();
+
+                    // Перевірка на порожній запит
+            if (query === '') {
+                resultsDiv.innerHTML = ''; // Очищуємо результати, якщо запит порожній
+                return;
+            }
+
+                    // Виконуємо AJAX-запит
+            fetch(`/ins/search/results/?query=${encodeURIComponent(query)}`)
+                .then(response => response.json())
+                .then(data => {
+                    resultsDiv.innerHTML = ''; // Очищуємо попередні результати
+
+                        data.results.forEach(item => {
+                            const itemElement = document.createElement('a');
+                            itemElement.textContent = item.name;
+                            itemElement.href = `http://127.0.0.1:8000/ins/ins/${item.id}/`;
+                            resultsDiv.appendChild(itemElement)
+                        });
+                })
+                .catch(error => console.error('Помилка при пошуку:', error));
+            });
+    </script>
+    <!--<script>
+
+</script>-->
+
+
+{% endblock %}

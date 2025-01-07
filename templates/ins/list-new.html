@@ -1,0 +1,121 @@
+{% load static %}
+{% load custom_tags %}
+  {% for ins in institutions %}
+    <div class="ins-div">
+      {% if ins.media %}
+        <div class="row">
+          <div class="col-sm-6 col-md-6 col-lg-6">
+            <h2 class="def-text" style="text-align: center;"><b>{{ ins.name }}</b></h2>
+            <h4>Location<a href="{{ ins.location }}"> <img src="{% static 'images/ins/location-ins.png' %}" style="width: 20px; height:auto"></a></h4>
+            <h4>{{ ins.type }}
+                {% if ins.type == "Catering" %}
+                    <img src="{% static 'images/ins/catering.png' %}" style="width: 55px; height:auto">
+                {% elif ins.type == "Sport" %}
+                    <img src="{% static 'images/ins/sport.png!sw800' %}" style="width: 50px; height:auto">
+                {% elif ins.type == "Entertainment" %}
+                    <img src="{% static 'images/ins/entertainment.png' %}" style="width: 35px; height:auto">
+                {% elif ins.type == "Education" %}
+                    <img src="{% static 'images/ins/education.png' %}" style="width: 40px; height:auto">
+                {% elif ins.type == "Trade" %}
+                    <img src="{% static 'images/ins/trade.png' %}" style="width: 35px; height:auto">
+                {% elif ins.type == "Hotels" %}
+                    <img src="{% static 'images/ins/hotels.png' %}" style="width: 30px; height:auto">
+                {% elif ins.type == "Beauty and health" %}
+                    <img src="{% static 'images/ins/beauty_health.png' %}" style="width: 40px; height:auto">
+                {% endif %}
+            </h4>
+            <h4>Rating
+              {% if ins.rating >= 0 and ins.rating <= 20 %}
+                <span style="color: #ffd700; font-size: 35px">★</span>
+                {% elif ins.rating > 20 and ins.rating <= 40 %}
+                   <span style="color: #ffd700; font-size: 35px">★★</span>
+                {% elif ins.rating > 40 and ins.rating <= 60 %}
+                   <span style="color: #ffd700; font-size: 35px">★★★</span>
+                {% elif ins.rating > 60 and ins.rating <= 80 %}
+                    <span style="color: #ffd700; font-size: 35px">★★★★</span>
+                {% elif ins.rating > 80 and ins.rating <= 100 %}
+                   <span style="color: #ffd700; font-size: 35px">★★★★★</span>
+                {% endif %}
+            </h4>
+            <div class="progress" style="margin-top: 80px;">
+              <div class="progress-bar" style='width:{{ ins.rating }}%;'>
+                {{ ins.rating }}
+              </div>
+            </div>
+              <br>
+              <a class="btn btn-info" href="{% url 'ins:ins-detail' ins.pk %}">Детальніше</a>
+          </div>
+          <div class="col-sm-6 col-md-6 col-lg-6">
+                {% if ins.media %}
+                        {% if ins.media.url|endswith:".jpg" or ins.media.url|endswith:".png" or ins.media.url|endswith:".jpeg" or ins.media.url|endswith:".webp" %}
+                            <img src="{{ ins.media.url }}" alt="Зображення коментаря" class="img-ins">
+                        {% elif ins.media.url|endswith:".mp4" %}
+                            <video class="img-ins" controls>
+                                <source src="{{ ins.media.url }}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        {% else %}
+                            <a href="{{ ins.media.url }}">Завантажити файл</a>
+                        {% endif %}
+              {% endif %}
+          </div>
+        </div>
+      {% else %}
+            <h2 class="def-text" style="text-align: center;"><b>{{ ins.name }}</b></h2>
+            <h4>Location<a href="{{ ins.location }}"> <img src="{% static 'images/ins/location-ins.png' %}" style="width: 20px; height:auto"></a></h4>
+            <h4>{{ ins.type }}
+                {% if ins.type == "Catering" %}
+                    <img src="{% static 'images/ins/catering.png' %}" style="width: 55px; height:auto">
+                {% elif ins.type == "Sport" %}
+                    <img src="{% static 'images/ins/sport.png!sw800' %}" style="width: 50px; height:auto">
+                {% elif ins.type == "Entertainment" %}
+                    <img src="{% static 'images/ins/entertainment.png' %}" style="width: 35px; height:auto">
+                {% elif ins.type == "Education" %}
+                    <img src="{% static 'images/ins/education.png' %}" style="width: 40px; height:auto">
+                {% elif ins.type == "Trade" %}
+                    <img src="{% static 'images/ins/trade.png' %}" style="width: 35px; height:auto">
+                {% elif ins.type == "Hotels" %}
+                    <img src="{% static 'images/ins/hotels.png' %}" style="width: 30px; height:auto">
+                {% elif ins.type == "Beauty and health" %}
+                    <img src="{% static 'images/ins/beauty_health.png' %}" style="width: 40px; height:auto">
+                {% endif %}
+            </h4>
+            <h4>Rating
+              {% if ins.rating >= 0 and ins.rating <= 20 %}
+                <span style="color: #ffd700; font-size: 35px">★</span>
+                {% elif ins.rating > 20 and ins.rating <= 40 %}
+                   <span style="color: #ffd700; font-size: 35px">★★</span>
+                {% elif ins.rating > 40 and ins.rating <= 60 %}
+                   <span style="color: #ffd700; font-size: 35px">★★★</span>
+                {% elif ins.rating > 60 and ins.rating <= 80 %}
+                    <span style="color: #ffd700; font-size: 35px">★★★★</span>
+                {% elif ins.rating > 80 and ins.rating <= 100 %}
+                   <span style="color: #ffd700; font-size: 35px">★★★★★</span>
+                {% endif %}
+            </h4>
+            <div class="progress">
+              <div class="progress-bar" style='width:{{ ins.rating }}%;'    >
+                {{ ins.rating }}
+              </div>
+            </div>
+             <br>
+              <a class="btn btn-info" href="{% url 'ins:ins-detail' ins.pk %}">Детальніше</a>
+      {% endif %}
+    </div>
+    <br>
+    <br>
+    {% empty %}
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <h1 style="text-align:center;" class="def-text">Немає закладів...</h1>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+  {% endfor %}

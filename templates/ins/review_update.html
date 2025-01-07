@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+        <div class="form-create-ins">
+            <br>
+            <h1 class="def-text" style="text-align: center;">Редагування відгуку</h1>
+            <br>
+            <form method="POST">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <br>
+              <button type="submit" class="btn btn-primary">Редагувати</button>
+              <a href = "{% url 'ins:ins-detail' review.institution.pk %}" class="btn btn-secondary">Назад</a>
+            </form>
+            <br>
+        </div>
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

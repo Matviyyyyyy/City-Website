@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<div class="container">
+    <h2>Видалення user</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Так, видалити</button>
+        <a href = "{% url 'auth:user-list' %}" class="btn btn-secondary">Ні, повернутися </a>
+    </form>
+</div>
+
+{% endblock %}

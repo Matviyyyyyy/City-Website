@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+{% load custom_tags %}
+{% load static %}
+<br>
+<br>
+{% if request.user.role == "admin" or request.user.role == "moderator" %}
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <a class="btn btn-create-advert" href="{% url 'adverts:advert-create' %}" ><i>Створити оголошення</i></a>
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    </div>
+{% endif %}
+<br>
+<br>
+    <div class="row">
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+        <div class="col-sm-10 col-md-10 col-lg-10">
+            <div class="adverts-div">
+                <div class="container-sm container-md container-lg">
+                    <div class="row">
+                        {% for advert in adverts %}
+                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                <div class="advert-div">
+                                    {% if advert.media %}
+                                        {% if advert.media.url|endswith:".jpg" or advert.media.url|endswith:".png" or advert.media.url|endswith:".jpeg" or advert.media.url|endswith:".webp" %}
+                                            {% if advert.title %}
+                                                <h4><b>{{ advert.title }}</b></h4>
+                                                <hr>
+                                            {% endif %}
+                                            <div class="row">
+                                                <div class="col-sm-7 col-md-7 col-lg-7">
+                                                    <h5>{{ advert.text }}</h5>
+                                                    <br>
+                                                    {% if request.user.role == "admin" or request.user.role == "moderator" %}
+                                                        <div class="row">
+                                                            <div class="col-sm-6 col-md-6 col-lg-6"><a href="{% url 'adverts:advert-update' advert.pk %}" class="btn btn-warning">Редагувати</a></div>
+                                                            <div class="col-sm-6 col-md-6 col-lg-6">
+                                                                <form action="{% url 'adverts:advert-delete' advert.pk %}" method="POST" >
+                                                                    {% csrf_token %}
+                                                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Ви справді хочете видалити це оголошення?')">Видалити</button>
+                                                                 </form>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                                <div class="col-sm-5 col-md-5 col-lg-5">
+                                                    <img src="{{ advert.media.url }}" alt="Зображення коментаря" class="img-advert">
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                        {% else%}
+                                            {% if advert.title %}
+                                                <h4><b>{{ advert.title }}</b></h4>
+                                                <hr>
+                                            {% endif %}
+                                            <h5><b>{{ advert.text }}</b></h5>
+                                            <br>
+                                            {% if request.user.role == "admin" or request.user.role == "moderator" %}
+                                                <div class="row">
+                                                    <div class="col-sm-3 col-md-3 col-lg-3"><a href="{% url 'adverts:advert-update' advert.pk %}" class="btn btn-warning">Редагувати</a></div>
+                                                    <div class="col-sm-2 col-md-2 col-lg-2">
+                                                        <form action="{% url 'adverts:advert-delete' advert.pk %}" method="POST" >
+                                                            {% csrf_token %}
+                                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Ви справді хочете видалити це оголошення?')">Видалити</button>
+                                                         </form>
+                                                    </div>
+                                                    <div class="col-sm-7 col-md-7 col-lg-7"></div>
+                                                </div>
+                                            {% endif %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% empty %}
+                            <div class="col-sm-12 col-md-12 col-lg-12">
+                                <br>
+                                <br>
+                                <h1 style="text-align:center;" class="def-text">Немає подій...</h1>
+                            </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+
+
+            </div>
+            <br>
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+    </div>
+    <br>
+    <br>
+
+{% endblock %}

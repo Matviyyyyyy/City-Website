@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% load static %}
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+        <div class="form-div-polls">
+            <br>
+            <h1 class="def-text" style="text-align: center;">Оновлення питання</h1>
+            <br>
+            <form method="POST">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <br>
+              <button type="submit" class="btn btn-danger">Змінити</button>
+              <a href = "{% url 'polls:question-detail' question.pk %}" class="btn btn-secondary">Назад</a>
+            </form>
+            <br>
+        </div>
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

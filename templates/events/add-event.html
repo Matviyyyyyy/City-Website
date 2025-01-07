@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+    <br>
+    <br>
+    <div class="container-sm container-md container-lg">
+        <div class="others-div-add">
+            <br>
+            <h1 class="def-text" style="text-align:center;">Adding event</h1>
+            <br>
+             <form method="post">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.title }}
+                            {% if form.title.errors %}
+                                <div class="errorlist">
+                                    {{ form.title.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group">
+                            {{ form.description }}
+                            {% if form.description.errors %}
+                                <div class="errorlist">
+                                    {{ form.description.errors }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-4 col-lg-4"></div>
+                        <div class="col-md-2 col-sm-2 col-lg-2">
+                            <a class="btn btn-warning" style="width: 180px; height: 50px;" href="{% url 'events:calendar' %}">Back</a>
+                        </div>
+                        <div class="col-md-2 col-sm-2 col-lg-2">
+                            <button type="submit" class="btn btn-warning" style="width: 180px; height: 50px; vertical-align:center; text-align:center;">Add</button>
+                        </div>
+                        <div class="col-md-4 col-sm-4 col-lg-4"></div>
+                    </div>
+            </form>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>    
+{% endblock %}

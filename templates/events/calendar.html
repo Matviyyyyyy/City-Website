@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #ccc;
+        border-radius: 20px;
+    }
+    th, td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ccc;
+    }
+</style>
+    <br>
+    <br>
+    <div class="navigation">
+        <button onclick="navigate(-1, 0)" class="btn btn-warning">Попередній рік</button>
+        <button onclick="navigate(0, -1)" class="btn btn-warning">Попередній місяць</button>
+        <button onclick="navigate(0, 1)" class="btn btn-warning">Наступний місяць</button>
+        <button onclick="navigate(1, 0)" class="btn btn-warning">Наступний рік</button>
+    </div>
+
+    <div class="table-div">
+        <div>
+            {{ calendar|safe }}
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="others-div">
+        <br>
+                <div class="row">
+                    {% for event in events %}
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <a href="{% url 'events:event-detail' event.pk %}" class="a-ev">
+                                <div class="div-event">
+                                    <h4 class="def-text" style="text-align: center;" >{{ event.title }}</h4>
+                                    <br>
+
+                                    <h6 class="def-text">{{ event.event_date|date:"F j, Y" }} <img src="{% static './images/walking/event.png' %}" style="width:40px; height: auto;"></h6>
+                                </div>
+                            </a>
+                            <br>
+                        </div>
+                    {% empty %}
+                        <br>
+                        <br>
+                        <br>
+                        <h4 style="color:white; text-align: center; margin-left: 550px;">Немає подій на цей місяць...</h4>
+                        <br>
+                        <br>
+                        <br>
+                    {% endfor %}
+                </div>
+            <ul>
+
+
+
+            </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <script>
+    function navigate(yearDelta, monthDelta) {
+        let currentYear = {{ year }};
+        let currentMonth = {{ month }};
+
+        let newMonth = currentMonth + monthDelta;
+        let newYear = currentYear + yearDelta;
+
+        // Якщо місяць більше 12 або менше 1, скоригуйте рік і місяць
+        if (newMonth > 12) {
+            newMonth = 1;
+            newYear++;
+        } else if (newMonth < 1) {
+            newMonth = 12;
+            newYear--;
+        }
+
+        // Формування URL для переходу на новий місяць або рік
+        const basePath = "/ev/calendar/";
+        const url = `${basePath}${newYear}/${newMonth}/`;
+        window.location.href = url;
+    }
+</script>
+
+
+{% endblock %}

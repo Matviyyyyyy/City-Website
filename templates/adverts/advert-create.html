@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+{% load static %}
+<br>
+<br>
+<div class="row">
+    <div class="col-md-3 col-sm-3 col-lg-3"></div>
+    <div class="col-md-6 col-sm-6 col-lg-6">
+        <div class="advert-form">
+            <h3 style="text-align: center; color: black; font: 'Inter', sans-serif;">Створення оголошення</h3>
+            <br>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Save</button>
+                <a href = "{% url 'adverts:advert-list' %}" class="btn btn-secondary">Назад</a>
+            </form>
+            <br>
+        </div>
+    </div>
+    <div class="col-md-3 col-sm-3 col-lg-3"></div>
+</div>
+<br>
+<br>
+
+{% endblock %}

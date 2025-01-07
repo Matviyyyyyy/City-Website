@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+
+<br>
+<br>
+<br>
+<h1 class="def-text" style="text-align: center; font-weight: 700"><i>{{ question.text }}</i></h1>
+{% if request.user.admin_or_moder %}
+    <br>
+    <br>
+    <br>
+    <div class="row">
+        <div class="col-sm-10 col-md-10 col-lg-10"></div>
+        <div class="col-sm-1 col-md-1 col-lg-1">
+            <a class="btn btn-warning" href="{% url 'polls:question-update' question.pk %}">Редагувати</a>
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1">
+            <form action="{% url 'polls:question-delete' question.pk %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger" onclick="return confirm('Ви справді хочете видалити це питання?')">Видалити</button>
+            </form>
+        </div>
+    </div>
+{% endif %}
+
+<br>
+<br>
+<hr>
+<br>
+<form method="post" action="{% url 'polls:question-detail' question.pk %}">
+    {% csrf_token %}
+    <div class="row">
+    {% for choice in answer_form.fields.choice.queryset %}
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            <button type="submit" name="choice" value="{{ choice.id }}" class="btn-choice">
+                {{ choice.respond }}
+            </button>
+            <br>
+            <div class="progress">
+                <div class="progress-bar" style="width:{{ choice.show_persent }}%">{{ choice.show_persent }}%</div>
+            </div>
+            <br>
+            <br>
+        </div>
+    {% endfor %}
+    </div>
+    <br>
+    <br>
+    <h5 class="def-text" style="text-align: right;">*Обери один з варінатів...</h5>
+    <input type="hidden" name="action_type" value="answer">
+</form>
+<br>
+{% if request.user.admin_or_moder %}
+<br>
+<div class="row">
+    <div class="col-sm-10 col-md-10 col-lg-10"></div>
+    <div class="col-sm-1 col-md-1 col-lg-1">
+        <button class="btn btn-dark" onclick="show_settings()" ondblclick="hide_settings()">Налаштування</button>
+    </div>
+    <div class="col-sm-1 col-md-1 col-lg-1"></div>
+</div>
+
+<br>
+<div id="settings" style="display: none">
+    <div class="row">
+        <div class="col-sm-3 col-md-3 col-lg-3"></div>
+        <div class="col-sm-6 col-md-6 col-lg-6">
+            <div class="settings">
+                <br>
+                <h3 class="def-text" style="text-align:center;">Налаштування відповідей</h3>
+                <br>
+                <form method="post" action="{% url 'polls:question-detail' question.pk %}">
+                    {% csrf_token %}
+                    {{ choice_form.as_p }}
+                    <input type="hidden" name="action_type" value="add_choice">
+                    <button type="submit" class="btn btn-primary">Додати</button>
+                </form>
+                <br>
+                <hr>
+                    <ul>
+                       {% for choice in question.choices.all %}
+                        <li>
+                            <h6>
+                                <b>{{ choice.respond }}</b>
+                                <a class="btn btn-warning" href="{% url 'polls:choice-update' choice.pk %}">Редагувати</a>
+                            </h6>
+                        </li>
+                        <h6><b>Відсоток відповідей</b> - {{ choice.show_persent }}%</h6>
+                         <form action="{% url 'polls:choice-delete' choice.pk %}" method="POST">
+                             {% csrf_token %}
+                             <button type="submit" class="btn btn-danger" onclick="return confirm('Ви справді хочете видалити цю відповідь?')">Видалити</button>
+                         </form>
+                        <hr>
+                        {% endfor %}
+                    </ul>
+
+            </div>
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3"></div>
+    </div>
+</div>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<script>
+    function show_settings(){
+        document.getElementById("settings").style.display = 'block';
+    }
+    function hide_settings(){
+        document.getElementById("settings").style.display = 'none';
+    };
+</script>
+
+<script>
+    // Масив кольорів веселки
+    const colors = [
+        '#FF6666', // Темно-червоний
+        '#FF9966', // Темно-оранжевий
+        '#FFCC66', // Темно-жовтий
+        '#66CC66', // Темно-зелений
+        '#66CCCC', // Темно-блакитний
+        '#6666CC', // Темно-синій
+        '#9966CC'  // Темно-фіолетовий
+    ];
+
+    // Отримуємо всі кнопки та прогрес-бари
+    const buttons = document.querySelectorAll('.btn-choice');
+    const progresses = document.querySelectorAll('.progress-bar');
+
+    // Призначаємо випадковий колір кожній кнопці і відповідному прогрес-бару
+    buttons.forEach((button, index) => {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        button.style.backgroundColor = randomColor;
+
+        // Перевіряємо, чи є відповідний прогрес-бар
+        if (progresses[index]) {
+            progresses[index].style.backgroundColor = randomColor;
+        }
+    });
+</script>
+
+
+{% endblock %}
