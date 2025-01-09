@@ -1,64 +1,64 @@
 {% load static %}
-{% load custom_tags %}w
+{% load custom_tags %}
 
 {% load static %}
-<div class="row">
-        {% for new in news %}
-            <div class="col-sm-4 col-md-4 col-lg-4">
-                <div class="new-div">
-                    {% if new.file %}
-                        {% if new.file.url|endswith:".jpg" or new.file.url|endswith:".png" or new.file.url|endswith:".jpeg" or new.file.url|endswith:".webp" %}
-                            <img src="{{ new.file.url }}" alt="Зображення коментаря" class="file-new">
-                        {% elif comment.media.url|endswith:".mp4" %}
-                            <video class="file-new" controls>
-                                <source src="{{ comment.media.url }}" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                        {% else %}
-                            <a href="{{ comment.media.url }}">Завантажити файл</a>
+    <div class="row align-items-center justify-content-center">
+            {% for new in news %}
+                <div class="col-4">
+                    <div class="new-div">
+                        {% if new.file %}
+                            {% if new.file.url|endswith:".jpg" or new.file.url|endswith:".png" or new.file.url|endswith:".jpeg" or new.file.url|endswith:".webp" %}
+                                <img src="{{ new.file.url }}" alt="Зображення коментаря" class="file-new">
+                            {% elif comment.media.url|endswith:".mp4" %}
+                                <video class="file-new" controls>
+                                    <source src="{{ comment.media.url }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            {% else %}
+                                <a href="{{ comment.media.url }}">Завантажити файл</a>
+                            {% endif %}
                         {% endif %}
-                    {% endif %}
 
-                    <h5 class="def-text" style="text-align:left; margin:6px;">{{ new.text }}</h5>
-                    <br>
-                    <div class="row">
-                        {% if request.user.admin_or_moder %}
-                            <div class="col-sm-3 col-md-3 col-lg-3">
-                                <a href="{% url 'news:new-update' new.pk %}" class="btn btn-warning">Редагувати</a>
-                            </div>
-                            <div class="col-sm-3 col-md-3 col-lg-3">
-                                <form action="{% url 'news:new-delete' new.pk %}" method="POST">
-                                    {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger" onclick="return confirm('Ви справді хочете видалити цю новину?')">Видалити</button>
-                                </form>
-                            </div>
-                            <div class="col-sm-1 col-md-1 col-lg-1"></div>
-                        {% else %}
-                            <div class="col-sm-7 col-md-7 col-lg-7"></div>
-                        {% endif %}
-                        <div class="col-sm-5 col-md-5 col-lg-5">
-                            <div class="date-div">
-                                <div class="new-date">{{ new.published_at|date:"d.m" }}</div>
+                        <h5 class="def-text" style="text-align:left; margin:6px;">{{ new.text }}</h5>
+                        <br>
+                        <div class="row">
+                            {% if request.user.admin_or_moder %}
+                                <div class="col-sm-3 col-md-3 col-lg-3">
+                                    <a href="{% url 'news:new-update' new.pk %}" class="btn btn-warning">Редагувати</a>
+                                </div>
+                                <div class="col-sm-3 col-md-3 col-lg-3">
+                                    <form action="{% url 'news:new-delete' new.pk %}" method="POST">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-danger" onclick="return confirm('Ви справді хочете видалити цю новину?')">Видалити</button>
+                                    </form>
+                                </div>
+                                <div class="col-sm-1 col-md-1 col-lg-1"></div>
+                            {% else %}
+                                <div class="col-sm-7 col-md-7 col-lg-7"></div>
+                            {% endif %}
+                            <div class="col-sm-5 col-md-5 col-lg-5">
+                                <div class="date-div">
+                                    <div class="new-date">{{ new.published_at|date:"d.m" }}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        {% empty %}
-            <div class="col-sm-12 col-md-12 col-lg-12">
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <h1 style="text-align:center;" class="def-text">Ще немає новин...</h1>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-            </div>
-        {% endfor %}
-</div>
+            {% empty %}
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <h1 style="text-align:center;" class="def-text">Ще немає новин...</h1>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            {% endfor %}
+    </div>

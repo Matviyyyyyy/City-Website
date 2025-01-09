@@ -12,13 +12,11 @@
 
 .a-nav{
     color: #212529;
-    position: absolute;
     text-decoration:none;
     font-family: "Inter", sans-serif;
     font-size: 17.5px;
     text-align: center;
     letter-spacing: 1px;
-    margin-top: 30px;
 
 }
 
@@ -36,29 +34,46 @@
 .search-icon-img{
     max-width: 20%;
     height: auto;
-    margin-right: 4px;
 
 }
 
-.user-search-div{
-    position: absolute;
-    margin-top: 26px;
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: "Inter", sans-serif;
+    box-sizing: border-box;
+    line-height: inherit;
 }
 
-.advert-main{
+.advert-main {
     border: 2px solid #ffff00;
     background-color: #f7f7cb;
-    font: "Inter", sans-serif;
-    text-align: center;
-    vertical-align: center;
     border-radius: 20px;
-    padding-top: 5px;
-    padding-bottom: 25px;
-    padding-left: 25px;
-    padding-right: 25px;
-    margin: 5px;
-    max-width: 100%;
+    padding: 20px; /* Оптимізовано внутрішні відступи */
+    margin: 20px auto; /* Центрування блоку */
+    max-width: 1200px; /* Максимальна ширина для великих екранів */
+    width: calc(100% - 40px); /* Адаптивна ширина з урахуванням відступів */
+    box-sizing: border-box; /* Врахування відступів */
+    text-align: center;
 }
+
+/* Адаптивність для середніх екранів (планшети) */
+@media (max-width: 768px) {
+    .advert-main {
+        padding: 15px;
+        max-width: 90%;
+    }
+}
+
+/* Адаптивність для мобільних екранів */
+@media (max-width: 480px) {
+    .advert-main {
+        padding: 10px;
+        max-width: 100%;
+    }
+}
+
 
 .close-advert{
     font-size: 25px;
@@ -69,7 +84,7 @@
     border-radius: 100px;
     width: 40px;
     height: 40px;
-    margin-left: 1450px;
+
 }
 
 .close-advert:hover{
@@ -496,11 +511,29 @@
     border-top: 10px solid #2f2f2f; /* Колір трикутника */
 }
 .table-main {
-    border-collapse: collapse; /* Усуває проміжки між кордонами */
     width: 100%;
+    border-collapse: collapse;
     border-top: 1px dotted #cfcfcf;
     border-left: 1px dotted #cfcfcf;
 }
+
+
+/* Для пристроїв з шириною екрану до 768px */
+@media (max-width: 768px) {
+    .table-main {
+        width: 100%;
+        font-size: 14px; /* Зменшуємо розмір шрифту */
+    }
+}
+
+/* Для пристроїв з шириною екрану до 480px */
+@media (max-width: 480px) {
+    .table-main {
+        width: 100%;
+        font-size: 12px; /* Ще більше зменшуємо розмір шрифту */
+    }
+}
+
 
 .main-td{
     border: 1px dotted #cfcfcf;
@@ -904,4 +937,8 @@
 
 .footer-bottom a:hover {
     text-decoration: underline;
+}
+.table-container {
+    width: 100%;
+    overflow-x: auto;
 }

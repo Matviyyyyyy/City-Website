@@ -1,10 +1,14 @@
 asgiref==3.8.1
+boto3==1.35.80
+botocore==1.35.80
 certifi==2024.12.14
 charset-normalizer==3.4.0
 cloudinary==1.41.0
 Django==5.1.2
 django-cloudinary-storage==0.3.0
+django-environ==0.11.2
 django-storages==1.14.4
+environ==1.0
 gunicorn==23.0.0
 idna==3.10
 jmespath==1.0.1

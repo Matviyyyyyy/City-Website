@@ -13,26 +13,28 @@ import os.path
 from pathlib import Path
 from os import *
 import cloudinary.api
+import environ
 
 cloudinary.config(
-    cloud_name="dtlmjumtp",
-    api_key="759131367467294",
-    api_secret="KvtXZds6xbGKgFCOUceO-0KcRsg"
+    cloud_name=os.getenv("cloud_name", default=None),
+    api_key=os.getenv("api_key", default=None),
+    api_secret=os.getenv("api_secret", default=None)
 )
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+env = environ.Env()
+environ.Env.read_env(".env")
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fk$tl8q$%*-ha$9!n*ixt)d3@$o28rtckdjg@cwms#@f@%fy$n'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [".onrender.com"]
+ALLOWED_HOSTS = [".onrender.com", '127.0.0.1']
 
 
 # Application definition
@@ -56,10 +58,10 @@ INSTALLED_APPS = [
     'cloudinary_storage',
 ]
 
-
-CLOUDINARY_STORAGE = "CLOUDINARY_URL=cloudinary://539194582124328:BfKdhq8WU_xTqEHf7piXrYiDnbY@dkb0luxbj"
+CLOUDINARY_STORAGE=os.getenv("CLOUDINARY_STORAGE", default=None)
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
 
 
 MIDDLEWARE = [
@@ -100,11 +102,11 @@ WSGI_APPLICATION = 'system.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'citydata',
-        'USER': 'master',
-        'PASSWORD': 'I7Kv6tXS3jMiDwI22FNamh6u52NFnDMv',
-        'HOST': 'dpg-ctd11m9opnds739s5jvg-a.frankfurt-postgres.render.com',
-        'PORT': '5432'
+        'NAME': os.getenv("NAME", default=None),
+        'USER': os.getenv("USER", default=None),
+        'PASSWORD': os.getenv("PASSWORD", default=None),
+        'HOST': os.getenv("HOST", default=None),
+        'PORT': os.getenv("PORT", default=None)
     }
 }
 

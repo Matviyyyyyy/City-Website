@@ -74,7 +74,7 @@ class CustomUserAuthenticationForm(AuthenticationForm):
 
         self.fields["password"].widget.attrs.update({
             "class": "form-control",
-            "placeholder": "Ім'я користувача..."
+            "placeholder": "Пароль..."
         })
         self.fields["password"].label = ""
 
