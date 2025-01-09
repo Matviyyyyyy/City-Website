@@ -32,7 +32,7 @@ environ.Env.read_env(".env")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.getenv('debug', default=None)
 
 ALLOWED_HOSTS = [".onrender.com", '127.0.0.1']
 
