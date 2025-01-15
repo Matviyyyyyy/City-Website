@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-<header style="width: 100%">
     <nav class="sticky-top nav-edit ">
       <div class= "row align-items-center justify-content-center">
           <div class="col-sm-1 col-md-1 col-lg-1"></div>
@@ -45,12 +44,11 @@
           <div class="col-sm-1 col-md-1 col-lg-1"></div>
         </div>
     </nav>
-</header>
     <br>
     {% if request.session.advert %}
         <div class="advert-main" id="advert-main">
             <br>
-            <button type="button" class="btn-close" aria-label="Close"></button>
+            <button type="button" class="btn btn-warning" onclick="close_advert()">Закрити</button>
             <h4>{{ request.session.advert }}</h4>
         </div>
     {% endif %}
